@@ -1,0 +1,10 @@
+.noto-sans-kr-regular {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Or apply globally */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
