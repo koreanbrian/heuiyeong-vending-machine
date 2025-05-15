@@ -31,7 +31,7 @@
         </div>
         <!-- 고장 안내문 -->
         <div id="brokeMachineNotfication" class="brokeMachineNotfication"></div>
-        <div class="sub-element" style="display: none" id="fixMachineBtn">
+        <div class="sub-element" style="display: none" id="fixMachineBtnDiv">
           <button onclick="fixMachine()" id="fixBtn">자판기 걷어차기</button>
         </div>
       </div>
@@ -97,7 +97,10 @@
               <p>결제 수단을 선택하시면 결제 메뉴가 표시됩니다.</p>
             </div>
             <div id="creditcardSection">
-              <button class="cash-insert-button" onclick="payWithCard()">카드결제</button>
+              <div class="sub-element" style="display: none" id="changeCardBtnDiv">
+                <button class="cash-insert-button" onclick="changeCard()" id="changeCardBtn">카드교체</button>
+              </div>
+              <button class="card-insert-button" id="payWithCardBtn" onclick="payWithCard()">카드결제</button>
             </div>
             <div id="cashSection">
               <button class="cash-insert-button" onclick="insertMoney(100)">100원</button>

@@ -140,6 +140,14 @@ button {
   margin: 2px;
   padding: 4px;
 }
+.card-insert-button {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 5px;
+  border: none;
+  background-color: #eeeeee;
+}
+
 .cash-insert-button {
   margin: 2px;
   padding: 4px;
