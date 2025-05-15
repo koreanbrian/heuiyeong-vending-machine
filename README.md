@@ -19,7 +19,7 @@ This project is licensed under the MIT License – see the [LICENSE](./LICENSE) 
 - 투입한 금액, 잔액 구매현황 실시간 표시
 
 ## 프로젝트 구조
-
+```
 heuiyeong-vending-machine/
 ├── index.html
 ├── script.js
@@ -27,7 +27,7 @@ heuiyeong-vending-machine/
 ├── package.json
 ├── README.md
 └── LICENSE
-
+```
 ## 실행방법
 
 1. GitHub에서 프로젝트 클론
