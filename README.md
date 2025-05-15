@@ -17,6 +17,7 @@ This project is licensed under the MIT License – see the [LICENSE](./LICENSE) 
 - 해당 현금으로 음료 구매 가능
 - 잔액 반환/초기화 기능 제공
 - 투입한 금액, 잔액 구매현황 실시간 표시
+- 자판기 고장 시, 모든 기능 사용 불가능
 
 ## 프로젝트 구조
 
