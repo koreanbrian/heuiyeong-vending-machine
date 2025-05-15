@@ -2,134 +2,124 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>자판기</title>
+    <title>자판기 시뮬레이터</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
-    <style>
-      body {
-        font-family: "Noto Sans KR", sans-serif;
-        font-size: 12px;
-        padding: 20px;
-      }
-      #select-payment-method {
-        text-align: center;
-        width: 200px;
-        padding: 10px;
-        background-color: #eeeeee;
-        margin-bottom: 20px;
-      }
-      #select-payment-method h2 {
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 10px;
-      }
-      .payment-option {
-        font-size: 15px;
-        margin-bottom: 10px;
-      }
-      table {
-        width: 250px;
-        background-color: #eeeeee;
-        margin-bottom: 10px;
-        border-collapse: collapse;
-      }
-      thead {
-        background-color: #dddddd;
-        text-align: center;
-      }
-      tbody {
-        text-align: center;
-      }
-      button {
-        margin: 2px;
-      }
-    </style>
   </head>
   <body>
-    <h1>자판기</h1>
+    <div class="machine-body">
+      <div class="subject-div">자판기 시뮬레이터</div>
 
-    <!-- Payment Method Selection -->
-    <section id="select-payment-method">
-      <h2>결제 수단 선택</h2>
-      <div class="payment-option">
-        <label><input name="paymentMethod" type="radio" value="cash" /> 현금결제</label>
-        <label><input name="paymentMethod" type="radio" value="creditcard" /> 카드결제</label>
+      <!-- 자판기 상태 및 음료 선택 -->
+      <div class="machine-top-part">
+        <div id="brokeMachineNotfication" class="brokeMachineNotfication"></div>
+        <div class="drink-button">
+          <div>
+            <button onclick="buyDrink('cola')">콜라 (1,100원)</button>
+            <p>콜라: <span id="stockCola">0</span>개</p>
+          </div>
+          <div>
+            <button onclick="buyDrink('water')">물 (600원)</button>
+            <p>물: <span id="stockWater">0</span>개</p>
+          </div>
+          <div>
+            <button onclick="buyDrink('coffee')">커피 (700원)</button>
+            <p>커피: <span id="stockCoffee">0</span>개</p>
+          </div>
+        </div>
+
+        <div style="text-align: right; padding-right: 10px">음료를 선택해 주세요</div>
       </div>
-    </section>
 
-    <!-- Cash Section -->
-    <section id="cashSection">
-      <h2>현재 사용가능 현금</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>단위</th>
-            <th>갯수</th>
-            <th>총계</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>100</td>
-            <td><span id="hundredTotal">0</span>개</td>
-            <td><span id="hundredBalance">0</span>원</td>
-          </tr>
-          <tr>
-            <td>500</td>
-            <td><span id="fiveHundredTotal">0</span>개</td>
-            <td><span id="fiveHundredBalance">0</span>원</td>
-          </tr>
-          <tr>
-            <td>1,000</td>
-            <td><span id="thousandTotal">0</span>개</td>
-            <td><span id="thousandBalance">0</span>원</td>
-          </tr>
-          <tr>
-            <td>5,000</td>
-            <td><span id="fiveThousandTotal">0</span>개</td>
-            <td><span id="fiveThousandBalance">0</span>원</td>
-          </tr>
-          <tr>
-            <td>10,000</td>
-            <td><span id="tenThousandTotal">0</span>개</td>
-            <td><span id="tenThousandBalance">0</span>원</td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- 자판기 하단부: 좌측 - 결제 및 보유 현금 / 우측 - 결과 및 잔액 -->
+      <div class="machine-bottom-part">
+        <!-- 좌측 -->
+        <div class="left-side">
+          <!-- 결제 수단 -->
+          <div class="sub-element">
+            <div class="sub-element-subject">결제 수단을 선택해 주세요</div>
+            <div class="payment-option">
+              <label><input name="paymentMethod" type="radio" value="cash" /> 현금결제</label>
+              <label><input name="paymentMethod" type="radio" value="creditcard" /> 카드결제</label>
+            </div>
+          </div>
 
-      <h2>현금을 투입해주세요</h2>
-      <div>
-        <button onclick="insertMoney(100)">100원</button>
-        <button onclick="insertMoney(500)">500원</button>
-        <button onclick="insertMoney(1000)">1,000원</button>
-        <button onclick="insertMoney(5000)">5,000원</button>
-        <button onclick="insertMoney(10000)">10,000원</button>
+          <!-- 보유 현금 -->
+          <div class="sub-element">
+            <div class="sub-element-subject">현재 보유 현금</div>
+            <div class="sub-element-subject">현금 총액: <span style="font-weight: normal" id="balance">0</span></div>
+            <table class="cash-info-table">
+              <thead class="cash-info-thead">
+                <tr>
+                  <th>단위</th>
+                  <th>갯수</th>
+                  <th>총계</th>
+                </tr>
+              </thead>
+              <tbody class="cash-info-tbody">
+                <tr>
+                  <td>100</td>
+                  <td><span id="hundredTotal">0</span>개</td>
+                  <td><span id="hundredBalance">0</span>원</td>
+                </tr>
+                <tr>
+                  <td>500</td>
+                  <td><span id="fiveHundredTotal">0</span>개</td>
+                  <td><span id="fiveHundredBalance">0</span>원</td>
+                </tr>
+                <tr>
+                  <td>1,000</td>
+                  <td><span id="thousandTotal">0</span>개</td>
+                  <td><span id="thousandBalance">0</span>원</td>
+                </tr>
+                <tr>
+                  <td>5,000</td>
+                  <td><span id="fiveThousandTotal">0</span>개</td>
+                  <td><span id="fiveThousandBalance">0</span>원</td>
+                </tr>
+                <tr>
+                  <td>10,000</td>
+                  <td><span id="tenThousandTotal">0</span>개</td>
+                  <td><span id="tenThousandBalance">0</span>원</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 결제 버튼 -->
+          <div class="sub-element">
+            <div class="sub-element-subject">결제해주세요</div>
+            <div id="payment-notification">
+              <p>결제 수단을 선택하시면 결제 메뉴가 표시됩니다.</p>
+            </div>
+            <div id="creditcardSection">
+              <button class="cash-insert-button" onclick="payWithCard()">카드결제</button>
+            </div>
+            <div id="cashSection">
+              <button class="cash-insert-button" onclick="insertMoney(100)">100원</button>
+              <button class="cash-insert-button" onclick="insertMoney(500)">500원</button>
+              <button class="cash-insert-button" onclick="insertMoney(1000)">1,000원</button>
+              <button class="cash-insert-button" onclick="insertMoney(5000)">5,000원</button>
+              <button class="cash-insert-button" onclick="insertMoney(10000)">10,000원</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측 표시 내용-->
+        <div class="right-side">
+          <div class="sub-element">
+            <p id="moneyInserted">자판기 잔액: 0원</p>
+            <button onclick="resetBalance()" id="resetBlaanceBtn">잔액 초기화</button>
+          </div>
+          <div class="sub-element">
+            <div class="sub-element-subject">결과</div>
+            <div id="output"></div>
+          </div>
+        </div>
       </div>
-      <p>잔액: <span id="balance">0</span></p>
-      <button onclick="resetBalance()">잔액 초기화</button>
-      <p>현재 자판기에 넣은 금액: <span id="moneyInserted">0</span>원</p>
-    </section>
-
-    <!-- Credit Card Section -->
-    <section id="creditcardSection" class="creditcardSection">
-      <button onclick="payWithCard()">카드결제</button>
-    </section>
-
-    <!-- Product Selection -->
-    <section id="product-section">
-      <h2>음료 선택</h2>
-      <button onclick="buyDrink('cola')">콜라 (1,100원)</button>
-      <button onclick="buyDrink('water')">물 (600원)</button>
-      <button onclick="buyDrink('coffee')">커피 (700원)</button>
-    </section>
-
-    <!-- Output -->
-    <section id="output-section">
-      <h2>결과</h2>
-      <div id="output"></div>
-    </section>
+    </div>
 
     <script src="./script.js"></script>
   </body>

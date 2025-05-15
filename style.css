@@ -4,7 +4,145 @@
   font-weight: 400;
   font-style: normal;
 }
-/* Or apply globally */
+
 body {
   font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+}
+.subject-div {
+  width: 800px;
+  text-align: center;
+  background-color: red;
+  padding-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.machine-body {
+  width: 70%;
+  text-align: center;
+  justify-items: center;
+  background-color: red;
+  padding: 20px;
+}
+
+.drink-button {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+}
+
+.machine-top-part {
+  display: block;
+  width: 760px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.machine-bottom-part {
+  display: flex;
+  width: 760px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: aliceblue;
+  justify-content: space-between;
+}
+
+.machine-bottom-part .left-side {
+  width: 350px;
+  background-color: burlywood;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.machine-bottom-part .right-side {
+  width: 350px;
+  background-color: #dddddd;
+  border-radius: 5px;
+
+  padding: 10px;
+}
+.machine-bottom-part .right-side .output-section {
+  text-align: left;
+  width: 95%;
+  background-color: #ffffff;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.machine-bottom-part .right-side .output-section .sub-element-subject {
+  width: max-content;
+  text-align: start;
+  font-weight: bold;
+}
+.cash-info {
+  background-color: white;
+}
+.sub-element {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  justify-items: center;
+}
+.sub-element .sub-element-subject {
+  width: 100%;
+  text-align: start;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.sub-element .payment-option {
+  width: 100%;
+}
+.cash-insert {
+  width: 90%;
+  border-radius: 5px;
+  justify-items: center;
+  justify-content: space-between;
+}
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.cash-info-table {
+  width: 100%;
+  background-color: #eeeeee;
+  margin-bottom: 10px;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+.cash-info-thead {
+  width: 100%;
+  background-color: #dddddd;
+  text-align: center;
+  padding: 5px;
+}
+.cash-info-tbody {
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+button {
+  margin: 2px;
+  padding: 4px;
+}
+.cash-insert-button {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 5px;
+  border: none;
+  background-color: #eeeeee;
 }
