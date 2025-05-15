@@ -1,4 +1,4 @@
-## HEUIYEONG-vending-machine
+## heuiyeong-vending-machine
 
 HTML, JavaScript, CSS로 구현한 간단한 자판기 시뮬레이션입니다.
 사용자는 결제 수단을 선택하고, 현금이나 카드를 투입하여 음료를 구매할 수 있습니다.
