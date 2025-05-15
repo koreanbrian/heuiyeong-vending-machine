@@ -14,7 +14,7 @@
 
       <!-- 자판기 상태 및 음료 선택 -->
       <div class="machine-top-part">
-        <div id="brokeMachineNotfication" class="brokeMachineNotfication"></div>
+        <div style="text-align: center; font-size: 15px; font-weight: 600">음료를 선택해 주세요</div>
         <div class="drink-button">
           <div>
             <button onclick="buyDrink('cola')">콜라 (1,100원)</button>
@@ -29,15 +29,17 @@
             <p>커피: <span id="stockCoffee">0</span>개</p>
           </div>
         </div>
-
-        <div style="text-align: right; padding-right: 10px">음료를 선택해 주세요</div>
+        <!-- 고장 안내문 -->
+        <div id="brokeMachineNotfication" class="brokeMachineNotfication"></div>
+        <div class="sub-element" style="display: none" id="fixMachineBtn">
+          <button onclick="fixMachine()" id="fixBtn">자판기 걷어차기</button>
+        </div>
       </div>
 
       <!-- 자판기 하단부: 좌측 - 결제 및 보유 현금 / 우측 - 결과 및 잔액 -->
       <div class="machine-bottom-part">
         <!-- 좌측 -->
         <div class="left-side">
-          <!-- 결제 수단 -->
           <div class="sub-element">
             <div class="sub-element-subject">결제 수단을 선택해 주세요</div>
             <div class="payment-option">

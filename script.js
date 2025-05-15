@@ -40,17 +40,28 @@ function handlePaymentMethod() {
   const creditcardSection = document.getElementById("creditcardSection");
   const notificationSection = document.getElementById("payment-notification");
   const resetBtn = document.getElementById("resetBlaanceBtn");
+  const moneyInserted = document.getElementById("moneyInserted");
+  const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
 
   if (method === "cash") {
     cashSection.style.display = "block";
     creditcardSection.style.display = "none";
     notificationSection.style.display = "none";
+    resetBalance();
+    moneyInserted.textContent = isFinite(moneyInserted) ? `자판기 잔액: ${moneyInserted}원` : "카드이용";
     resetBtn.disabled = false;
+    paymentOptions.forEach((radio) => {
+      radio.disabled = true;
+    });
   } else if (method === "creditcard") {
+    resetBalance();
     cashSection.style.display = "none";
     creditcardSection.style.display = "block";
     notificationSection.style.display = "none";
     resetBtn.disabled = true;
+    paymentOptions.forEach((radio) => {
+      radio.disabled = true;
+    });
   } else {
     cashSection.style.display = "none";
     creditcardSection.style.display = "none";
@@ -71,10 +82,6 @@ function updateBalance() {
   document.getElementById("fiveThousandBalance").textContent = 5000 * money[5000];
   document.getElementById("tenThousandTotal").textContent = money[10000];
   document.getElementById("tenThousandBalance").textContent = 10000 * money[10000];
-
-  document.getElementById("stockCola").textContent = drinkStock.cola;
-  document.getElementById("stockWater").textContent = drinkStock.water;
-  document.getElementById("stockCoffee").textContent = drinkStock.coffee;
 
   document.getElementById("moneyInserted").textContent = isFinite(moneyInserted)
     ? `자판기 잔액: ${moneyInserted}원`
@@ -136,6 +143,8 @@ function buyDrink(type) {
   if (moneyInserted >= price) {
     moneyInserted -= price;
     updateBalance();
+    drinkStock[type]--;
+    updateDrinkStockUI();
     showMessage(`${type} 구매완료!`);
     if (balance !== Infinity) {
       showMessage(`잔액: ${moneyInserted}원`);
@@ -148,16 +157,22 @@ function notifyBrokenMachine() {
   const notification = document.getElementById("brokeMachineNotfication");
   const allButtons = document.querySelectorAll("button");
   const paymentOptions = this.document.querySelectorAll('input[name="paymentMethod"]');
-
+  const fixMachineBtnDiv = document.getElementById("fixMachineBtn");
+  const fixMachineBtn = document.getElementById("fixBtn");
   if (isMachineBroken) {
     notification.textContent = "자판기 고장으로 현재 사용할 수 없습니다.";
     notification.style.color = "red";
     notification.style.fontWeight = "bold";
+    fixMachineBtnDiv.style.display = "block";
+
     paymentOptions.forEach((radio) => {
       radio.disabled = true;
     });
     allButtons.forEach((btn) => {
       btn.disabled = true;
+      if (fixMachineBtn) {
+        fixMachineBtn.disabled = false;
+      }
     });
   } else {
     notification.textContent = "자판기 사용가능";
@@ -170,10 +185,26 @@ function notifyBrokenMachine() {
     });
   }
 }
-// Initial UI load
+function updateDrinkStockUI() {
+  document.getElementById("stockCola").textContent = drinkStock.cola;
+  document.getElementById("stockWater").textContent = drinkStock.water;
+  document.getElementById("stockCoffee").textContent = drinkStock.coffee;
+}
+
+function fixMachine() {
+  isMachineBroken = false;
+  const fixMachineBtnDiv = document.getElementById("fixMachineBtn");
+  fixMachineBtnDiv.style.display = "none";
+  const fixMachineBtn = document.getElementById("fixBtn");
+  fixMachineBtn.disabled = true;
+  showMessage("🔧 자판기가 고쳐졌습니다.");
+  notifyBrokenMachine();
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   updateBalance();
   notifyBrokenMachine();
+  updateDrinkStockUI();
   const paymentOptions = this.document.querySelectorAll('input[name="paymentMethod"]');
   paymentOptions.forEach((radio) => {
     radio.addEventListener("change", handlePaymentMethod);
