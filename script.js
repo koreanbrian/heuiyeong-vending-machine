@@ -180,7 +180,7 @@ class VendingUI {
     document.getElementById("tenThousandBalance").textContent = 10000 * vending.money[10000];
 
     document.getElementById("moneyInserted").textContent = isFinite(vending.moneyInserted)
-      ? `자판기 잔액: ${vending.moneyInserted}원`
+      ? `자판기 내 현금: ${vending.moneyInserted}원`
       : "카드이용";
 
     const balanceElement = document.getElementById("balance");
@@ -229,7 +229,7 @@ class VendingUI {
       creditcardSection.style.display = "none";
       notificationSection.style.display = "none";
       vending.resetBalance();
-      moneyInsertedText.textContent = `자판기 잔액: ${vending.moneyInserted}원`;
+      moneyInsertedText.textContent = `자판기 내 현금: ${vending.moneyInserted}원`;
       resetBtn.disabled = false;
       paymentOptions.forEach((radio) => (radio.disabled = true));
       allButtons.forEach((btn) => {
