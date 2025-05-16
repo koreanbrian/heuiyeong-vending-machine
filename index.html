@@ -17,22 +17,22 @@
         <div style="text-align: center; font-size: 15px; font-weight: 600">음료를 선택해 주세요</div>
         <div class="drink-button">
           <div>
-            <button onclick="buyDrink('cola')">콜라 (1,100원)</button>
+            <button onclick="vending.buyDrink('cola')">콜라 (1,100원)</button>
             <p>콜라: <span id="stockCola">0</span>개</p>
           </div>
           <div>
-            <button onclick="buyDrink('water')">물 (600원)</button>
+            <button onclick="vending.buyDrink('water')">물 (600원)</button>
             <p>물: <span id="stockWater">0</span>개</p>
           </div>
           <div>
-            <button onclick="buyDrink('coffee')">커피 (700원)</button>
+            <button onclick="vending.buyDrink('coffee')">커피 (700원)</button>
             <p>커피: <span id="stockCoffee">0</span>개</p>
           </div>
         </div>
         <!-- 고장 안내문 -->
-        <div id="brokeMachineNotfication" class="brokeMachineNotfication"></div>
+        <div id="brokenMachineNotification" class="brokenMachineNotification"></div>
         <div class="sub-element" style="display: none" id="fixMachineBtnDiv">
-          <button onclick="fixMachine()" id="fixBtn">자판기 걷어차기</button>
+          <button onclick="vending.fixMachine()" id="fixBtn">자판기 걷어차기</button>
         </div>
       </div>
 
@@ -98,16 +98,16 @@
             </div>
             <div id="creditcardSection">
               <div class="sub-element" style="display: none" id="changeCardBtnDiv">
-                <button class="cash-insert-button" onclick="changeCard()" id="changeCardBtn">카드교체</button>
+                <button class="cash-insert-button" onclick="vending.changeCard()" id="changeCardBtn">카드교체</button>
               </div>
-              <button class="card-insert-button" id="payWithCardBtn" onclick="payWithCard()">카드결제</button>
+              <button class="card-insert-button" id="payWithCardBtn" onclick="vending.payWithCard()">카드결제</button>
             </div>
             <div id="cashSection">
-              <button class="cash-insert-button" onclick="insertMoney(100)">100원</button>
-              <button class="cash-insert-button" onclick="insertMoney(500)">500원</button>
-              <button class="cash-insert-button" onclick="insertMoney(1000)">1,000원</button>
-              <button class="cash-insert-button" onclick="insertMoney(5000)">5,000원</button>
-              <button class="cash-insert-button" onclick="insertMoney(10000)">10,000원</button>
+              <button class="cash-insert-button" onclick="vending.insertMoney(100)">100원</button>
+              <button class="cash-insert-button" onclick="vending.insertMoney(500)">500원</button>
+              <button class="cash-insert-button" onclick="vending.insertMoney(1000)">1,000원</button>
+              <button class="cash-insert-button" onclick="vending.insertMoney(5000)">5,000원</button>
+              <button class="cash-insert-button" onclick="vending.insertMoney(10000)">10,000원</button>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
         <div class="right-side">
           <div class="sub-element">
             <p id="moneyInserted">자판기 잔액: 0원</p>
-            <button onclick="resetBalance()" id="resetBlaanceBtn">잔액 초기화</button>
+            <button onclick="vending.resetBalance()" id="resetBalanceBtn">잔액 초기화</button>
           </div>
           <div class="sub-element">
             <div class="sub-element-subject">결과</div>
@@ -125,7 +125,6 @@
         </div>
       </div>
     </div>
-
     <script src="./script.js"></script>
   </body>
 </html>
